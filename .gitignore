@@ -1,0 +1,5 @@
+node_modules
+dist
+tracker/models/*.task
+__pycache__/
+.server_logs/

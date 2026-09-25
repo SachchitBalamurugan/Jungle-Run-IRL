@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temple Run IRL</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23f5c451'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700&family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+
+    <!-- HUD -->
+    <div id="hud" class="hidden">
+      <div class="hud-left">
+        <div class="hud-pill"><span class="coin-icon"></span><span id="hud-coins">0</span></div>
+        <div class="hud-pill small" id="hud-mult">x1</div>
+      </div>
+      <div class="hud-right">
+        <div id="hud-score">0</div>
+        <div id="hud-dist">0 m</div>
+      </div>
+      <div id="toast"></div>
+      <div id="stumble-flash"></div>
+    </div>
+
+    <!-- Webcam panel -->
+    <div id="cam-panel" class="hidden">
+      <canvas id="cam-canvas" width="320" height="240"></canvas>
+      <div id="cam-status">Loading OpenCV…</div>
+    </div>
+
+    <!-- Screens -->
+    <div id="screen-menu" class="screen">
+      <div class="title-wrap">
+        <div class="title-kicker">An OpenCV body-controlled adventure</div>
+        <h1 class="title">Temple Run <span>IRL</span></h1>
+        <p class="subtitle">Your whole body is the controller. Step left or right to switch lanes, jump to leap and crouch to slide.</p>
+        <div class="menu-buttons">
+          <button id="btn-camera" class="btn primary">Play with Camera</button>
+          <button id="btn-keys" class="btn">Play with Keyboard</button>
+        </div>
+        <button id="btn-recalibrate" class="btn ghost hidden">Recalibrate body tracking</button>
+        <div id="menu-note" class="menu-note"></div>
+        <div class="legend">
+          <div><kbd>←</kbd><kbd>→</kbd> lane</div>
+          <div><kbd>↑</kbd> / <kbd>Space</kbd> jump</div>
+          <div><kbd>↓</kbd> slide</div>
+          <div><kbd>P</kbd> pause · <kbd>M</kbd> mute · <kbd>C</kbd> cam view</div>
+        </div>
+        <div id="best-line" class="best-line"></div>
+      </div>
+    </div>
+
+    <div id="screen-calibrate" class="screen hidden">
+      <div class="calib-card wide">
+        <div class="calib-layout">
+          <canvas id="calib-canvas" width="640" height="480"></canvas>
+          <div class="calib-side">
+            <div class="title-kicker">Full-body calibration</div>
+            <h2>Calibrate</h2>
+            <ol id="calib-steps" class="calib-steps"></ol>
+            <p id="calib-msg" class="calib-hint">Starting camera…</p>
+            <p id="calib-issue" class="calib-issue"></p>
+            <div class="progress"><div id="calib-progress"></div></div>
+            <div id="sound-hint" class="sound-hint">Click anywhere to enable sound</div>
+            <div class="calib-buttons">
+              <button id="btn-calib-skip-step" class="btn small hidden">Skip step</button>
+              <button id="btn-calib-restart" class="btn small">Restart</button>
+              <button id="btn-calib-skip" class="btn ghost">Use keyboard instead</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="screen-countdown" class="screen hidden transparent">
+      <div id="countdown-num">3</div>
+    </div>
+
+    <div id="screen-pause" class="screen hidden">
+      <div class="calib-card small">
+        <h2 id="pause-title">Paused</h2>
+        <p id="pause-msg">Press P to resume.</p>
+      </div>
+    </div>
+
+    <div id="screen-over" class="screen hidden">
+      <div class="over-card">
+        <div class="title-kicker">The demons caught you</div>
+        <h2 class="over-title">Game Over</h2>
+        <div class="stats">
+          <div><span>Score</span><b id="over-score">0</b></div>
+          <div><span>Coins</span><b id="over-coins">0</b></div>
+          <div><span>Distance</span><b id="over-dist">0 m</b></div>
+          <div><span>Best</span><b id="over-best">0</b></div>
+        </div>
+        <div class="restart-hint" id="restart-hint">Jump and hold (or press <kbd>Space</kbd>) to run again</div>
+        <div class="progress"><div id="restart-progress"></div></div>
+        <div class="menu-buttons">
+          <button id="btn-restart" class="btn primary">Run Again</button>
+          <button id="btn-over-recal" class="btn">Recalibrate</button>
+          <button id="btn-menu" class="btn">Menu</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="loading" class="screen">
+      <div class="loader"></div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
