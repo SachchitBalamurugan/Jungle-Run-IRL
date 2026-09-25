@@ -1,4 +1,4 @@
-// Temple Run IRL: game bootstrap + state machine.
+// Jungle Run IRL: game bootstrap + state machine.
 // (auto) calibrate -> countdown -> running <-> paused -> dying -> over  (menu reachable from game over)
 import * as THREE from 'three';
 import { World } from './game/world.js';

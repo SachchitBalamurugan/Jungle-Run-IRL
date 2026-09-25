@@ -1,4 +1,4 @@
-"""Temple Run IRL body tracker.
+"""Jungle Run IRL body tracker.
 
 OpenCV captures the webcam, MediaPipe Pose builds a 33-joint armature, and armature.py calibrates
 to the player and turns their pose into actions. Everything is streamed to the browser game over a
@@ -147,7 +147,7 @@ class Tracker:
 
             if self.args.window:
                 draw_debug(frame, lm, self.arm)
-                cv2.imshow("Temple Run IRL - tracker", frame)
+                cv2.imshow("Jungle Run IRL - tracker", frame)
                 if cv2.waitKey(1) & 0xFF in (27, ord("q")):
                     self.running = False
 

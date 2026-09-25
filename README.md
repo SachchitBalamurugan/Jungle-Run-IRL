@@ -1,6 +1,6 @@
-# Temple Run IRL
+# Jungle Run IRL
 
-An endless temple runner in Three.js that you control with your **whole body**.
+An endless jungle-temple runner in Three.js that you control with your **whole body**.
 
 A **Python tracker** (`tracker/`) does the computer vision:
 
